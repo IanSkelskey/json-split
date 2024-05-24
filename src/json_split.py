@@ -7,26 +7,26 @@ from InquirerPy import prompt
 from colorama import init, Fore, Style
 
 init(autoreset=True)
-
-
-import json
-import os
-import sys
-
 def split_json(input_file, output_dir, num_files):
-	with open(input_file, 'r') as f:
-		data = json.load(f)
+    with open(input_file, 'r') as f:
+        data = json.load(f)
 
-	num_items = len(data)
-	items_per_file = num_items // num_files
+    num_items = len(data)
+    items_per_file = num_items // num_files
 
-	if not os.path.exists(output_dir):
-		os.makedirs(output_dir)
+    if not os.path.exists(output_dir):
+        os.makedirs(output_dir)
 
-		for i in range(num_files):
-			start = i * items_per_file
-			end = (i + 1) * items_per_file
-			if i == num_files - 1:
+    for i in range(num_files):
+        start = i * items_per_file
+        end = (i + 1) * items_per_file
+        if i == num_files - 1:
+            end = num_items
+        output_file = os.path.join(output_dir, 'output_{}.json'.format(i))
+        with open(output_file, 'w') as f:
+            json.dump(data[start:end], f, indent=4)
+
+    print(Fore.GREEN + 'Split {} into {} files in {}'.format(input_file, num_files, output_dir))
 				end = num_items
 			output_file = os.path.join(output_dir, 'output_{}.json'.format(i))
 			with open(output_file, 'w') as f:
