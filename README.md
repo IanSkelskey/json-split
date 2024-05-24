@@ -9,6 +9,10 @@ This repository contains a Python script for splitting a large JSON file into a 
 
 1. Clone the repository:
 
+## Installation
+
+1. Clone the repository:
+
 ```bash
 git clone https://github.com/IanSkelskey/json-split.git
 ```
@@ -19,7 +23,12 @@ git clone https://github.com/IanSkelskey/json-split.git
 cd json-split/src
 ```
 
-3. Run the script with the following command:
+3. Install the required packages:
+
+```bash
+pip install -r requirements.txt
+```
+
 
 ```bash
 python json_split.py <input_file> <output_dir> <num_files>
