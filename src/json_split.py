@@ -3,6 +3,12 @@
 # Example: python json_split.py input.json output 10
 # This will split input.json into 10 smaller files in the output directory
 
+from InquirerPy import prompt
+from colorama import init, Fore, Style
+
+init(autoreset=True)
+
+
 import json
 import os
 import sys
